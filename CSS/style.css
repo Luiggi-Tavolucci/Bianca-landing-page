@@ -685,8 +685,10 @@ span.destaque { color: var(--primary-color); }
 .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* 3 Colunas */
+    display: flex;
+    justify-content: space-between; /* Joga um bloco para cada lado */
+    align-items: center; /* Alinha o conteúdo pelo centro verticalmente */
+    flex-wrap: wrap; /* Garante que quebre a linha no mobile */
     gap: 50px;
     padding-bottom: 40px;
     border-bottom: 1px solid rgba(255,255,255,0.2);
