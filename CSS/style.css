@@ -85,9 +85,8 @@ span.destaque { color: var(--primary-color); }
     padding: 14px 32px;
     border-radius: 50px;
     font-weight: 700;
-    cursor: pointer;
     transition: var(--transition);
-    border: 2px solid transparent;
+    border: 2px;
     font-size: 1rem;
 }
 
@@ -101,7 +100,8 @@ span.destaque { color: var(--primary-color); }
     background-color: var(--primary-hover);
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(187, 158, 118, 0.4);
-    color: var(--white);
+    color: var(--accent-color);
+    background-color: #f5e1e4;
 }
 
 /* Botão Outline (Borda Bege) */
@@ -241,10 +241,12 @@ span.destaque { color: var(--primary-color); }
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    width: 120%; height: 120%;
+    width: 108%; height: 108%;
+    border-radius: 6%;
     background: radial-gradient(circle, var(--secondary-bg) 0%, rgba(255,255,255,0) 70%);
     z-index: 1;
     opacity: 0.8;
+    
 }
 
 /* Plaquinhas Flutuantes */
