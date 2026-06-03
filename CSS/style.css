@@ -60,6 +60,7 @@ span.destaque { color: var(--primary-color); }
     .bonus-section,
     .conteudos-section,
     .target-audience-section,
+    .faq-section,
     .cta-section {
         min-height: 100vh; /* Altura mínima = 100% da tela */
         display: flex;
@@ -657,9 +658,42 @@ span.destaque { color: var(--primary-color); }
     background-color: var(--secondary-bg);
     font-weight: 700;
 }
-/* Seta do Accordion (Cor Bege) */
+/* Seta do Accordion (Cor Bege) e Animação */
 .accordion-button::after {
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23bb9e76'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    transition: transform 0.3s ease; /* Deixa o giro suave */
+}
+
+/* Gira a seta para cima quando a pergunta é aberta */
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(-180deg);
+}
+
+/*ANIMAÇÃO SUAVE DO FAQ (EFEITO SANFONA DESLIZANTE)
+/* Sobrescreve o comportamento brusco do Bootstrap e prepara o terreno */
+.accordion-collapse {
+    display: grid !important;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out !important;
+    opacity: 0;
+}
+
+/* Quando o botão é clicado e a classe 'show' é ativada no JS */
+.accordion-collapse.show {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+/* Garante que o texto interno seja esmagado corretamente na animação */
+.accordion-collapse .accordion-body {
+    overflow: hidden;
+    transition: padding 0.4s ease-out;
+}
+
+/* Remove o padding interno quando fechado para não sobrar espaços em branco */
+.accordion-collapse:not(.show) .accordion-body {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .accordion-body { font-size: 0.95rem; color: var(--text-light); padding: 25px; line-height: 1.6; }
@@ -679,7 +713,7 @@ span.destaque { color: var(--primary-color); }
    13. RODAPÉ (FOOTER)
    ================================================================= */
 .footer {
-    background-color: var(--primary-color); /* Fundo Bege */
+    background-color: var(--accent-color); /* Fundo Bege */
     color: var(--white);
     padding: 80px 8% 30px;
 }

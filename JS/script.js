@@ -32,3 +32,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// =================================================================
+    // FUNÇÃO PARA ABRIR E FECHAR O FAQ (ACCORDION)
+    // =================================================================
+    const faqButtons = document.querySelectorAll('.accordion-button');
+
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Encontra qual é a caixa de texto (resposta) deste botão específico
+            const targetId = button.getAttribute('data-bs-target');
+            const targetCollapse = document.querySelector(targetId);
+
+            // Verifica se esta pergunta já está aberta
+            const isOpen = targetCollapse.classList.contains('show');
+
+            // Primeiro: Fecha TODAS as perguntas e volta as setinhas para baixo
+            document.querySelectorAll('.accordion-collapse').forEach(collapse => {
+                collapse.classList.remove('show');
+            });
+            document.querySelectorAll('.accordion-button').forEach(btn => {
+                btn.classList.add('collapsed');
+            });
+
+            // Segundo: Se a pergunta que clicaste estava fechada, abre-a e roda a setinha
+            if (!isOpen) {
+                targetCollapse.classList.add('show');
+                button.classList.remove('collapsed');
+            }
+        });
+    });
